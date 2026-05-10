@@ -37,3 +37,5 @@ As descobertas confirmam que falhas de configuração (misconfigurations) são m
 ALTA,Multi-Factor Authentication (MFA),Neutraliza 99% dos ataques de força bruta e spraying.  
 ALTA,Account Lockout Policy,Bloqueia contas após N tentativas falhas.  
 MÉDIA,SIEM & Logging Progressivo,Detecta padrões de login anômalos em tempo real.  
+
+![Nmap Recon](images/01_nmap_scan.png)
