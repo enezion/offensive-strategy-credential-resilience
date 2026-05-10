@@ -1,0 +1,38 @@
+{
+  "audit_details": {
+    "project": "Auditoria de Resiliência de Credenciais - RCHLO/DIO",
+    "analyst_level": "Senior",
+    "target_environment": "Sandboxing (Metasploitable 2 / DVWA)",
+    "timestamp": "2026-05-10T14:30:00Z"
+  },
+  "critical_findings": [
+    {
+      "vector": "FTP Protocol",
+      "host": "192.168.56.101",
+      "account": "service_admin",
+      "status": "COMPROMISED",
+      "evidence": "Medusa Auth Success",
+      "risk_impact": "Exfiltração de dados sensíveis e upload de web shells."
+    },
+    {
+      "vector": "SMB / Password Spraying",
+      "host": "192.168.56.101",
+      "account": "rchlo_user",
+      "status": "VALIDATED",
+      "evidence": "smbclient listing successful",
+      "risk_impact": "Movimentação lateral e comprometimento de GPOs corporativas."
+    },
+    {
+      "vector": "HTTP-Form (Web)",
+      "host": "192.168.56.101",
+      "status": "VULNERABLE",
+      "finding": "Ausência de proteção Anti-CSRF e Lockout Policy no formulário de login.",
+      "risk_impact": "Acesso não autorizado a interfaces administrativas via automação."
+    }
+  ],
+  "mitigation_summary": {
+    "mfa_status": "REQUIRED",
+    "account_lockout": "NOT_IMPLEMENTED",
+    "overall_resilience_score": "LOW"
+  }
+}
